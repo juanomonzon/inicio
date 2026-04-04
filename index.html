@@ -2,6 +2,124 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Inicio — RC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a; --surface: #111; --border: #1e1e1e;
+    --accent: #c8f060; --accent2: #60c8f0; --txt: #f0f0f0; --muted: #444;
+    --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif;
+  }
+  html, body { height: 100%; background: var(--bg); color: var(--txt); font-family: var(--mono); overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .wrap {
+    position: relative; z-index: 1; min-height: 100vh;
+    display: flex; flex-direction: column;
+    padding: 24px 20px; gap: 32px;
+  }
+  .header { display: flex; align-items: baseline; gap: 12px; opacity: 0; animation: fadeUp 0.6s ease forwards; }
+  .header-title { font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .header-time { font-size: 11px; color: var(--muted); }
+
+  /* Grid Responsive */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    width: 100%;
+  }
+  .card {
+    position: relative; height: 180px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 16px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 16px; text-decoration: none; color: var(--txt);
+    transition: transform 0.25s ease; opacity: 0; animation: fadeUp 0.5s ease forwards;
+  }
+  .card-icon { position: absolute; top: 12px; right: 12px; font-size: 32px; }
+  .card-tag { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .card-name { font-family: var(--display); font-size: 14px; font-weight: 700; line-height: 1.2; margin-bottom: 4px; }
+  .card-url { font-size: 8px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Colores */
+  .card-1 .card-name, .card-3 .card-name { color: #c8f060; }
+  .card-2 .card-name, .card-5 .card-name { color: #60c8f0; }
+  .card-4 .card-name { color: #f0b460; }
+
+  .footer { margin-top: auto; font-size: 10px; color: var(--muted); padding-top: 20px; opacity: 0; animation: fadeUp 0.5s ease 0.7s forwards; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Ajuste para celus muy chicos */
+  @media (max-width: 360px) {
+    .grid { grid-template-columns: 1fr; }
+    .card { height: 140px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <span class="header-title">Radar Cultural</span>
+    <span class="header-time" id="clock"></span>
+  </div>
+  <div class="grid">
+    <a class="card card-1" href="https://chat-generador-de-guiones.vercel.app/" target="_blank">
+      <span class="card-icon">🎬</span>
+      <span class="card-tag">herramienta</span>
+      <span class="card-name">Generador de Guiones</span>
+      <span class="card-url">chat-generador-de-guiones.vercel.app</span>
+    </a>
+    <a class="card card-2" href="https://aistudio.google.com/apps" target="_blank">
+      <span class="card-icon">⚗️</span>
+      <span class="card-tag">google</span>
+      <span class="card-name">AI Studio</span>
+      <span class="card-url">aistudio.google.com/apps</span>
+    </a>
+    <a class="card card-3" href="https://radarcultural.vercel.app/" target="_blank">
+      <span class="card-icon">🗺️</span>
+      <span class="card-tag">proyecto</span>
+      <span class="card-name">Radar Cultural</span>
+      <span class="card-url">radarcultural.vercel.app</span>
+    </a>
+    <a class="card card-4" href="https://github.com/juanomonzon" target="_blank">
+      <span class="card-icon">🐙</span>
+      <span class="card-tag">código</span>
+      <span class="card-name">GitHub</span>
+      <span class="card-url">github.com/juanomonzon</span>
+    </a>
+    <a class="card card-5" href="https://gemini.google.com/app?hl=es_419" target="_blank">
+      <span class="card-icon">✦</span>
+      <span class="card-tag">google</span>
+      <span class="card-name">Gemini</span>
+      <span class="card-url">gemini.google.com</span>
+    </a>
+  </div>
+  <div class="footer">— juanomonzon</div>
+</div>
+<script>
+  function tick() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const day = ['dom','lun','mar','mié','jue','vie','sáb'][now.getDay()];
+    document.getElementById('clock').textContent = `${day} ${h}:${m}`;
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inicio — RC</title>
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEwMCIgZmlsbD0iIzBhMGEwYSIvPgogIDxyZWN0IHg9IjQwIiB5PSI0MCIgd2lkdGg9IjQzMiIgaGVpZ2h0PSI0MzIiIHJ4PSI4MCIgZmlsbD0iIzExMSIvPgogIDx0ZXh0IHg9IjI1NiIgeT0iMzAwIiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMjAwIiBmb250LXdlaWdodD0iYm9sZCIgCiAgICAgICAgZmlsbD0iI2M4ZjA2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9Ii04Ij5SQzwvdGV4dD4KICA8cmVjdCB4PSI4MCIgeT0iMzYwIiB3aWR0aD0iMzUyIiBoZWlnaHQ9IjMiIHJ4PSIyIiBmaWxsPSIjYzhmMDYwIiBvcGFjaXR5PSIwLjQiLz4KPC9zdmc+">
