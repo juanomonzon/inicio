@@ -107,6 +107,7 @@
       <span class="card-url">github.com/juanomonzon</span>
     </a>
 
+    <!-- Claude: deep link nativo, fallback web -->
     <a class="card card-claude" href="claude://" target="_self"
        onclick="setTimeout(function(){ window.location.href='https://claude.ai' }, 500);">
       <span class="card-icon">✦</span>
@@ -115,16 +116,18 @@
       <span class="card-url">claude.ai</span>
     </a>
 
-    <a class="card card-edits" href="edits://" target="_self"
-       onclick="setTimeout(function(){ window.location.href='https://apps.apple.com/app/edits/id1546275424' }, 500);">
+    <!-- Edits (Instagram): deep link nativo, fallback App Store -->
+    <a class="card card-edits" href="edits-ig://" target="_self"
+       onclick="setTimeout(function(){ window.location.href='itms-apps://apps.apple.com/app/id6738967378' }, 500);">
       <span class="card-icon">✂️</span>
-      <span class="card-tag">edición</span>
+      <span class="card-tag">instagram</span>
       <span class="card-name">Edits</span>
-      <span class="card-url">edits app</span>
+      <span class="card-url">edits-ig app</span>
     </a>
 
-    <a class="card card-premiere" href="x-adobe-premiere://" target="_self"
-       onclick="setTimeout(function(){ window.location.href='https://apps.apple.com/app/adobe-premiere-rush/id1188753863' }, 500);">
+    <!-- Adobe Premiere: deep link nativo, fallback App Store -->
+    <a class="card card-premiere" href="adobepremiere://" target="_self"
+       onclick="setTimeout(function(){ window.location.href='itms-apps://apps.apple.com/app/id6742757464' }, 500);">
       <span class="card-icon">🎞️</span>
       <span class="card-tag">adobe</span>
       <span class="card-name">Premiere</span>
