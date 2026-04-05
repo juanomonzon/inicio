@@ -13,7 +13,7 @@
     --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif;
   }
   html, body { height: 100%; background: var(--bg); color: var(--txt); font-family: var(--mono); overflow-x: hidden; }
-  
+
   .wrap {
     position: relative; z-index: 1; min-height: 100dvh;
     display: flex; flex-direction: column;
@@ -41,22 +41,21 @@
 
   .card-icon { position: absolute; top: 12px; right: 12px; font-size: 28px; }
   .card-tag { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  
-  .card-name { 
-    font-family: var(--display); font-size: 14px; font-weight: 700; 
+
+  .card-name {
+    font-family: var(--display); font-size: 14px; font-weight: 700;
     line-height: 1.1; margin-bottom: 4px;
     hyphens: auto; word-break: break-word;
   }
-  
+
   .card-url { font-size: 8px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.6; }
 
-  /* Colores por card */
   .card-1 .card-name, .card-3 .card-name { color: #c8f060; }
   .card-2 .card-name                     { color: #60c8f0; }
   .card-4 .card-name                     { color: #f0b460; }
   .card-claude .card-name                { color: #cc785c; }
   .card-edits .card-name                 { color: #c8f060; }
-  .card-premiere .card-name             { color: #9b6cf0; }
+  .card-premiere .card-name              { color: #9b6cf0; }
 
   .footer { margin-top: auto; font-size: 10px; color: var(--muted); padding-top: 20px; }
 
@@ -108,7 +107,6 @@
       <span class="card-url">github.com/juanomonzon</span>
     </a>
 
-    <!-- Claude — abre app iOS, fallback a web -->
     <a class="card card-claude" href="claude://" target="_self"
        onclick="setTimeout(function(){ window.location.href='https://claude.ai' }, 500);">
       <span class="card-icon">✦</span>
@@ -117,7 +115,6 @@
       <span class="card-url">claude.ai</span>
     </a>
 
-    <!-- Edits — abre app iOS, fallback a App Store -->
     <a class="card card-edits" href="edits://" target="_self"
        onclick="setTimeout(function(){ window.location.href='https://apps.apple.com/app/edits/id1546275424' }, 500);">
       <span class="card-icon">✂️</span>
@@ -126,147 +123,14 @@
       <span class="card-url">edits app</span>
     </a>
 
-    <!-- Adobe Premiere — abre app iOS, fallback a App Store -->
     <a class="card card-premiere" href="x-adobe-premiere://" target="_self"
        onclick="setTimeout(function(){ window.location.href='https://apps.apple.com/app/adobe-premiere-rush/id1188753863' }, 500);">
       <span class="card-icon">🎞️</span>
       <span class="card-tag">adobe</span>
       <span class="card-name">Premiere</span>
-      <span class="card-url">premiere rush</span>
+      <span class="card-url">adobe premiere</span>
     </a>
 
-  </div>
-
-  <div class="footer">— juanomonzon</div>
-</div>
-
-<script>
-  function tick() {
-    const now = new Date();
-    const h = String(now.getHours()).padStart(2,'0');
-    const m = String(now.getMinutes()).padStart(2,'0');
-    const days = ['dom','lun','mar','mié','jue','vie','sáb'];
-    document.getElementById('clock').textContent = `${days[now.getDay()]} ${h}:${m}`;
-  }
-  tick();
-  setInterval(tick, 1000);
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Inicio — RC</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0a; --surface: #111; --border: #1e1e1e;
-    --accent: #c8f060; --accent2: #60c8f0; --txt: #f0f0f0; --muted: #444;
-    --mono: 'DM Mono', monospace; --display: 'Syne', sans-serif;
-  }
-  html, body { height: 100%; background: var(--bg); color: var(--txt); font-family: var(--mono); overflow-x: hidden; }
-  
-  .wrap {
-    position: relative; z-index: 1; min-height: 100dvh;
-    display: flex; flex-direction: column;
-    padding: 24px 20px; gap: 24px;
-  }
-
-  .header { display: flex; flex-direction: column; gap: 4px; opacity: 0; animation: fadeUp 0.6s ease forwards; }
-  .header-title { font-family: var(--display); font-size: 16px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
-  .header-time { font-size: 11px; color: var(--muted); }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-    gap: 12px;
-    width: 100%;
-  }
-
-  .card {
-    position: relative; height: 160px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 16px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 16px; text-decoration: none; color: var(--txt);
-    opacity: 0; animation: fadeUp 0.5s ease forwards;
-  }
-
-  .card-icon { position: absolute; top: 12px; right: 12px; font-size: 28px; }
-  .card-tag { font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  
-  .card-name { 
-    font-family: var(--display); font-size: 14px; font-weight: 700; 
-    line-height: 1.1; margin-bottom: 4px;
-    hyphens: auto; word-break: break-word;
-  }
-  
-  .card-url { font-size: 8px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0.6; }
-
-  /* Colores por card */
-  .card-1 .card-name, .card-3 .card-name { color: #c8f060; }
-  .card-2 .card-name, .card-5 .card-name { color: #60c8f0; }
-  .card-4 .card-name { color: #f0b460; }
-  .card-claude .card-name { color: #cc785c; }
-
-  .footer { margin-top: auto; font-size: 10px; color: var(--muted); padding-top: 20px; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 340px) {
-    .grid { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-
-<div class="wrap">
-  <div class="header">
-    <span class="header-title">Radar Cultural</span>
-    <span class="header-time" id="clock">...</span>
-  </div>
-
-  <div class="grid">
-    <a class="card card-1" href="https://chat-generador-de-guiones.vercel.app/" target="_blank">
-      <span class="card-icon">🎬</span>
-      <span class="card-tag">herramienta</span>
-      <span class="card-name">Generador de Guiones</span>
-      <span class="card-url">guiones.vercel.app</span>
-    </a>
-
-    <a class="card card-2" href="https://aistudio.google.com/apps" target="_blank">
-      <span class="card-icon">⚗️</span>
-      <span class="card-tag">google</span>
-      <span class="card-name">AI Studio</span>
-      <span class="card-url">aistudio.google.com</span>
-    </a>
-
-    <a class="card card-3" href="https://radarcultural.vercel.app/" target="_blank">
-      <span class="card-icon">🗺️</span>
-      <span class="card-tag">proyecto</span>
-      <span class="card-name">Radar Cultural</span>
-      <span class="card-url">radarcultural.vercel.app</span>
-    </a>
-
-    <a class="card card-4" href="https://github.com/juanomonzon" target="_blank">
-      <span class="card-icon">🐙</span>
-      <span class="card-tag">código</span>
-      <span class="card-name">GitHub</span>
-      <span class="card-url">github.com/juanomonzon</span>
-    </a>
-
-  <a class="card card-claude" href="https://claude.ai" target="_blank">
-      <span class="card-icon">✦</span>
-      <span class="card-tag">anthropic</span>
-      <span class="card-name">Claude</span>
-      <span class="card-url">claude.ai</span>
-    </a>
   </div>
 
   <div class="footer">— juanomonzon</div>
